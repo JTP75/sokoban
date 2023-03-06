@@ -1,0 +1,5 @@
+#!/bin/sh
+
+source /home/pacel/anaconda3/bin/activate env0
+
+python "$PWD/main.py"

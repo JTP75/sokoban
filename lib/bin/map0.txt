@@ -1,0 +1,16 @@
+F F F F F F F F F F F F F F F F
+F W W W W W W W W W W W W W W F
+F W F F F F F F F F F F F F W F
+F W F F F F F F F F F F F F W F
+F W F F F F F F F F F F F F W F
+F W F F F F F F F F G F F F W F
+F W F F F F F F F F F F F F W F
+F W F F F F F F F F F F F F W F
+F W F F F F F F F F F F F F W F
+F W F F F F F F F F F F F F W F
+F W F F F B F F F F F F F F W F
+F W F F F F F F F F F F F F W F
+F W F F F F F F F F F F F F W F
+F W F F F F F F F F F F F P W F
+F W W W W W W W W W W W W W W F
+F F F F F F F F F F F F F F F F
