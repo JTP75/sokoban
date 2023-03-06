@@ -3,46 +3,38 @@ import pygame
 import lib.gameobj as gobj
 from matplotlib.pyplot import imread,imshow,show
 
-class gametile:
+class maptile:
     
-    def __init__(self, type: str, occupant: None or gobj.block or gobj.player = None):
+    def __init__(self, type: str, occ=None):
         self.type       = type
         self.iswall     = ("W" in self.type)
         self.isgoal     = ("G" in self.type)
-        self.occupant   = occupant
-        self.img        = np.empty((54,54))
-        if self.iswall:
-            self.img = imread("bin/wall.png")
-        elif self.isgoal:
-            self.img = imread("bin/goal.png")
-        else:
-            self.img = imread("bin/floor.png")
+        self.occupant   = occ
 
 class gamelvl:
 
     def __init__(self,fname=None):
-        self.FWBPG_map  = None
+        self.title      = None
+        self.textmap    = None
         self.shape      = tuple()
-        self.tilemat    = None
+        self.static_map = None
         if fname is not None:
             self.loadmap(fname)
 
     def loadmap(self,filename):
-        self.FWBPG_map = np.loadtxt(filename)
-        self.shape = self.FWBPG_map.shape
-        self.tilemat = np.empty(self.shape)
-        for r in range(self.FWBPG_map.shape[0]):
-            for c in range(self.FWBPG_map.shape[1]):
-                tp = self.FWBPG_map[r,c]
-                if tp=="P":
+        self.textmap = np.loadtxt(filename)
+        self.title = filename[0:-4]
+        self.shape = self.textmap.shape
+        self.static_map = np.empty(self.shape)
+        for r in range(self.textmap.shape[0]):
+            for c in range(self.textmap.shape[1]):
+                tp = self.textmap[r,c]
+                if "P" in tp:
+                    tp = "F"
                     occupant = gobj.player((r,c))
+                elif "B" in tp:
                     tp = "F"
-                elif tp=="B":
                     occupant = gobj.block((r,c))
-                    tp = "F"
                 else:
                     occupant = None
-                self.tilemat[r,c] = gametile(tp,occupant)
-
-    def reset(self):
-        pass
+                self.static_map[r,c] = maptile(tp,occupant)
