@@ -1,4 +1,3 @@
-#from lib import sokoban
 import pygame
 from lib.sokoban import sokoban
 
@@ -9,11 +8,8 @@ try:
 
     running = True
     while running:
-        game.update_dsp()
-        for event in game.events:
-            if event.type == pygame.QUIT:
-                print("\n\nPyGame quit event detected. Exiting...\n")
-                running = False
+        game.screen.fill((0,0,255))
+        game.parse_events()
 
     try:
         game.quit()
@@ -23,8 +19,7 @@ try:
         raise e
     
 except KeyboardInterrupt:
-    
-    print("\n\nKeyboard interrupt detected. Exiting...\n")
+    print("\nKeyboard interrupt detected. Exiting...")
     try:
         game.quit()
         print("Exit Success!\n")
